@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      The complete permission list. INTERNET is the only thing this app can do
+      that a fully sandboxed app cannot, and USE_BIOMETRIC is an install-time
+      permission that grants no access to data.
+      On GrapheneOS the "Network" toggle can revoke INTERNET at runtime; the app
+      detects that and shows an offline notice instead of crashing.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+
+    <!-- Explicitly refuse permissions that a manifest merger might pull in. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.CAMERA"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:node="remove" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"
+        tools:node="remove" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:enableOnBackInvokedCallback="true"
+        android:localeConfig="@xml/locales_config"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="false"
+        android:theme="@style/Theme.Riverbank">
+
+        <!-- Vanadium/Chromium WebView: opt out of variations + metrics uploads. -->
+        <meta-data
+            android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" />
+        <!-- Safe Browsing would send URL hashes to a remote service. Off. -->
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode|smallestScreenSize|density"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Offer to open storefront links. Not autoVerify: we cannot host
+                 assetlinks.json on a domain we do not own, so Android shows the
+                 normal app chooser and the user stays in control. -->
+            <intent-filter android:label="@string/open_in_riverbank">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="www.amazon.ca" />
+                <data android:scheme="https" android:host="www.amazon.com" />
+                <data android:scheme="https" android:host="www.amazon.co.uk" />
+                <data android:scheme="https" android:host="www.amazon.de" />
+                <data android:scheme="https" android:host="www.amazon.fr" />
+                <data android:scheme="https" android:host="www.amazon.it" />
+                <data android:scheme="https" android:host="www.amazon.es" />
+                <data android:scheme="https" android:host="www.amazon.nl" />
+                <data android:scheme="https" android:host="www.amazon.se" />
+                <data android:scheme="https" android:host="www.amazon.pl" />
+                <data android:scheme="https" android:host="www.amazon.com.au" />
+                <data android:scheme="https" android:host="www.amazon.co.jp" />
+                <data android:scheme="https" android:host="www.amazon.in" />
+                <data android:scheme="https" android:host="www.amazon.com.mx" />
+                <data android:scheme="https" android:host="www.amazon.com.br" />
+                <data android:scheme="https" android:host="www.amazon.ae" />
+                <data android:scheme="https" android:host="www.amazon.sg" />
+                <data android:scheme="https" android:host="a.co" />
+                <data android:scheme="https" android:host="amzn.to" />
+            </intent-filter>
+
+            <!-- Share a product link into the app. -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Riverbank" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/settings" />
+
+        <activity
+            android:name=".LockActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.Riverbank.Lock" />
+
+        <!-- Static launcher shortcuts, the same ones the native app offers. -->
+        <meta-data
+            android:name="android.app.shortcuts"
+            android:resource="@xml/shortcuts" />
+
+        <!-- No content providers are declared on purpose. AndroidX ships
+             androidx.startup and the profile installer in some configurations;
+             remove them so the app exports nothing at all. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove" />
+    </application>
+
+    <!-- Needed on API 30+ so the "open in browser" action can see a browser. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+</manifest>

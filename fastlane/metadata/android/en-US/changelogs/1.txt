@@ -1,0 +1,8 @@
+First release.
+
+* WebView shell with bottom navigation, search and launcher shortcuts.
+* Compiled-in tracker blocklist with off/standard/strict modes.
+* Third-party cookies blocked; DNT and Sec-GPC sent by default.
+* Reduced user agent; Safe Browsing and WebView metrics disabled.
+* Optional biometric app lock and clear-on-exit.
+* Permission-free downloads and uploads.

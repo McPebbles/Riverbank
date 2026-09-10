@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="blocking_entries">
+        <item>@string/pref_blocking_off</item>
+        <item>@string/pref_blocking_standard</item>
+        <item>@string/pref_blocking_strict</item>
+    </string-array>
+    <string-array name="blocking_values" translatable="false">
+        <item>off</item>
+        <item>standard</item>
+        <item>strict</item>
+    </string-array>
+
+    <string-array name="dark_entries">
+        <item>@string/pref_dark_system</item>
+        <item>@string/pref_dark_on</item>
+        <item>@string/pref_dark_off</item>
+    </string-array>
+    <string-array name="dark_values" translatable="false">
+        <item>system</item>
+        <item>dark</item>
+        <item>light</item>
+    </string-array>
+
+    <string-array name="timeout_entries">
+        <item>@string/timeout_immediately</item>
+        <item>@string/timeout_1m</item>
+        <item>@string/timeout_5m</item>
+        <item>@string/timeout_15m</item>
+        <item>@string/timeout_never</item>
+    </string-array>
+    <string-array name="timeout_values" translatable="false">
+        <item>0</item>
+        <item>60</item>
+        <item>300</item>
+        <item>900</item>
+        <item>-1</item>
+    </string-array>
+</resources>

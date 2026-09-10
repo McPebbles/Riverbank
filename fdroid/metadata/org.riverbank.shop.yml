@@ -1,0 +1,51 @@
+# F-Droid metadata for the self-hosted repo.
+# `fdroid update` merges this with what it reads out of the APK itself.
+Categories:
+  - Internet
+License: MIT
+AuthorName: Riverbank contributors
+WebSite: https://github.com/OWNER/riverbank
+SourceCode: https://github.com/OWNER/riverbank
+IssueTracker: https://github.com/OWNER/riverbank/issues
+Changelog: https://github.com/OWNER/riverbank/blob/main/CHANGELOG.md
+
+AutoName: Riverbank
+
+Summary: A privacy-respecting shopping client. One permission, no trackers.
+
+Description: |-
+    Riverbank is an independent, minimal client for the Amazon storefront, built
+    for GrapheneOS and hardened Android. It renders the storefront's own mobile
+    website inside a locked-down WebView — Vanadium, on GrapheneOS.
+
+    The complete permission list is INTERNET and USE_BIOMETRIC. There is no
+    advertising ID, no analytics, no crash reporter, no background service and no
+    JavaScript bridge between the page and the app.
+
+    A compiled-in blocklist drops known telemetry and ad endpoints, including the
+    storefront's own beacons. Third-party cookies are blocked by default, DNT and
+    Sec-GPC are sent, and the user agent is reduced so the device model is not
+    broadcast.
+
+    Riverbank is not affiliated with, endorsed by, or sponsored by Amazon.com,
+    Inc. It contains no Amazon code, branding or artwork.
+
+AntiFeatures:
+  - NonFreeNet
+
+RepoType: git
+Repo: https://github.com/OWNER/riverbank.git
+
+# The Builds: block is only needed if you also submit to the OFFICIAL
+# F-Droid repository (see docs/FDROID.md Appendix B). A self-hosted binary
+# repo ignores it — `fdroid update` reads the APK you drop into repo/.
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: app
+    gradle:
+      - yes
+
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/action_search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/action_refresh"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_share" android:title="@string/action_share" app:showAsAction="never" />
+    <item android:id="@+id/action_open_external" android:title="@string/action_open_external" app:showAsAction="never" />
+    <item android:id="@+id/action_desktop_site" android:title="@string/action_desktop_site" android:checkable="true" app:showAsAction="never" />
+    <item android:id="@+id/action_end_session" android:title="@string/action_end_session" app:showAsAction="never" />
+    <item android:id="@+id/action_settings" android:title="@string/action_settings" app:showAsAction="never" />
+</menu>

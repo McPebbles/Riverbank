@@ -1,0 +1,36 @@
+# fdroid/config.yml.template
+#
+# Copy to fdroid/config.yml and fill in. config.yml is git-ignored because it
+# holds keystore passwords. NEVER commit the real file or the keystore.
+#
+#   cp fdroid/config.yml.template fdroid/config.yml
+#
+# Everything below is read by `fdroid update`, which builds the repo index.
+
+repo_url: "https://OWNER.github.io/riverbank-fdroid/fdroid/repo"
+repo_name: "Riverbank"
+repo_icon: "repo-icon.png"
+repo_description: >-
+  Signed releases of Riverbank, a privacy-respecting shopping client for
+  GrapheneOS. Built from https://github.com/OWNER/riverbank
+
+archive_older: 6
+archive_url: "https://OWNER.github.io/riverbank-fdroid/fdroid/archive"
+archive_name: "Riverbank archive"
+archive_description: >-
+  Older Riverbank releases.
+
+# --- Index signing key ------------------------------------------------------
+# This is the F-DROID REPO key. It signs the index, and is NOT the key that
+# signs the APK. Keep both offline.
+keystore: "keystore.p12"
+repo_keyalias: "riverbank-repo"
+# Prefer the environment: `fdroid update` reads these from config.yml, so on a
+# workstation put the real values here and keep the file 0600 and unversioned.
+keystorepass: "CHANGE_ME"
+keypass: "CHANGE_ME"
+keydname: "CN=Riverbank Repo, OU=F-Droid, O=Riverbank, L=, S=, C=CA"
+
+# Do not let fdroid rewrite APKs or scan for non-free bits it cannot see into.
+# (These are the defaults; listed so the intent is explicit.)
+allow_disabled_algorithms: false

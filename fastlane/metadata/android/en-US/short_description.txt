@@ -1,0 +1,1 @@
+A privacy-respecting shopping client. One permission, no trackers, no accounts.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="riverbank_primary">#FF15616D</color>
+    <color name="riverbank_on_primary">#FFFFFFFF</color>
+    <color name="riverbank_primary_container">#FFB5E8EF</color>
+    <color name="riverbank_on_primary_container">#FF00363D</color>
+    <color name="riverbank_secondary">#FF4A6267</color>
+    <color name="riverbank_surface">#FFFBFCFC</color>
+    <color name="riverbank_on_surface">#FF191C1D</color>
+    <color name="riverbank_surface_dark">#FF0F1416</color>
+    <color name="riverbank_on_surface_dark">#FFE1E3E4</color>
+    <color name="riverbank_primary_dark">#FF56D6E6</color>
+    <color name="riverbank_on_primary_dark">#FF00363D</color>
+    <color name="icon_background">#FF15616D</color>
+</resources>

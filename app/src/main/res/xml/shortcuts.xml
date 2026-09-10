@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="cart"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_cart"
+        android:shortcutShortLabel="@string/nav_cart"
+        android:shortcutLongLabel="@string/nav_cart">
+        <intent
+            android:action="org.riverbank.shop.OPEN_DESTINATION"
+            android:targetPackage="org.riverbank.shop"
+            android:targetClass="org.riverbank.shop.MainActivity">
+            <extra android:name="destination" android:value="cart" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="orders"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_orders"
+        android:shortcutShortLabel="@string/nav_orders"
+        android:shortcutLongLabel="@string/nav_orders">
+        <intent
+            android:action="org.riverbank.shop.OPEN_DESTINATION"
+            android:targetPackage="org.riverbank.shop"
+            android:targetClass="org.riverbank.shop.MainActivity">
+            <extra android:name="destination" android:value="orders" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="search"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_search"
+        android:shortcutShortLabel="@string/action_search"
+        android:shortcutLongLabel="@string/action_search">
+        <intent
+            android:action="org.riverbank.shop.OPEN_DESTINATION"
+            android:targetPackage="org.riverbank.shop"
+            android:targetClass="org.riverbank.shop.MainActivity">
+            <extra android:name="destination" android:value="search" />
+        </intent>
+    </shortcut>
+</shortcuts>

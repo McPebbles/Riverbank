@@ -1,0 +1,55 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Assemble debug APK
+        run: ./gradlew --no-daemon assembleDebug
+
+      - name: Lint
+        run: ./gradlew --no-daemon lintDebug
+
+      - name: Fail if the app ever gains a permission
+        run: |
+          set -euo pipefail
+          # The whole point of the project. If a dependency drags in a new
+          # permission, this build stops.
+          MANIFEST=$(find app/build/intermediates -name 'AndroidManifest.xml' -path '*merged_manifest*' | head -1)
+          if [ -z "$MANIFEST" ]; then
+            echo "::error::Could not find the merged manifest"; exit 1
+          fi
+          echo "Checking $MANIFEST"
+          grep -o 'android:name="android\.permission\.[A-Z_]*"' "$MANIFEST" \
+            | sed 's/.*permission\.//; s/"//' | sort -u > /tmp/found.txt
+          printf 'INTERNET\nUSE_BIOMETRIC\n' > /tmp/expected.txt
+          echo "--- permissions in the merged manifest ---"
+          cat /tmp/found.txt
+          if ! diff -u /tmp/expected.txt /tmp/found.txt; then
+            echo "::error::Permission set changed. Expected only INTERNET and USE_BIOMETRIC."
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: riverbank-debug
+          path: app/build/outputs/apk/debug/*.apk

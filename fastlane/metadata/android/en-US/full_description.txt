@@ -1,0 +1,54 @@
+Riverbank is an independent, minimal client for the Amazon storefront, built for
+GrapheneOS and hardened Android.
+
+It does one thing: it renders the storefront's own mobile website inside a
+locked-down WebView. On GrapheneOS that WebView is Vanadium, a Chromium build
+with Google services, metrics and Safe Browsing reporting removed.
+
+<b>What it does not have</b>
+
+* No advertising ID, no analytics SDK, no crash reporter, no attribution SDK.
+* No location, camera, microphone, contacts, storage or notification permission.
+* No background services, no jobs, no wake locks, no widgets that phone home.
+* No JavaScript bridge between the page and the app, so the site cannot reach
+  Android APIs at all.
+* No cloud backup: the manifest opts out of backup and device-to-device transfer.
+
+The complete permission list is INTERNET and USE_BIOMETRIC. That is it.
+
+<b>What it does have</b>
+
+* A back arrow and the page title in the header — no address bar. Bottom
+  navigation for Home, Cart, Orders, Lists and Account, a search icon that
+  expands into a search field, and launcher shortcuts, so it behaves like an app
+  rather than a bookmark.
+* When a page is off the storefront, the header shows its host under the title,
+  so a payment or sign-in redirect is never disguised as the store.
+* The storefront's "get the app" banners and interstitials are filtered out of
+  the page, and links that hand off to the native app are defused.
+* A compiled-in tracker blocklist that drops known telemetry and ad endpoints,
+  including the storefront's own beacons, with a counter you can inspect.
+* A strict mode that refuses every subresource except the storefront and its
+  image CDNs.
+* Third-party cookies blocked by default; DNT and Sec-GPC sent on page loads.
+* A reduced user agent, so the exact device model is not broadcast.
+* Optional biometric or PIN lock, with the screen contents hidden from the
+  recents view while the lock is on.
+* Optional clearing of cookies and cache when the app closes.
+* Invoice and document downloads through the system download manager, and photo
+  uploads for reviews and returns through the system file picker, neither of
+  which needs a storage permission.
+* Payment and sign-in redirects stay inside the app, so 3-D Secure checkouts
+  work; links that leave the storefront go to your browser.
+
+<b>What it cannot do</b>
+
+Riverbank is a website in a frame. It cannot deliver push notifications, scan
+barcodes, use Alexa, stream Prime Video with DRM, or do anything else that
+depends on the proprietary native app. If you need those, this is not for you.
+
+<b>Trademarks</b>
+
+Riverbank is not affiliated with, endorsed by, or sponsored by Amazon.com, Inc.
+or its subsidiaries. All trademarks are the property of their respective owners.
+Riverbank contains no Amazon code, branding or artwork.

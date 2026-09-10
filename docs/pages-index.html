@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riverbank F-Droid repository</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fbfcfc; --fg:#191c1d; --accent:#15616d; --muted:#5a6467; --card:#ffffff; --border:#dbe3e5; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f1416; --fg:#e1e3e4; --accent:#56d6e6; --muted:#9aa5a8; --card:#161d20; --border:#2a3336; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  main { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 1.9rem; margin: 0 0 .25rem; letter-spacing: -.02em; }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; }
+  h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.25rem; }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .87rem; }
+  .url { display:block; word-break: break-all; color: var(--accent); font-weight: 600; }
+  .fp { display:block; word-break: break-all; color: var(--muted); margin-top:.4rem; }
+  ol { padding-left: 1.2rem; }
+  li { margin: .4rem 0; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: .85rem; border-top:1px solid var(--border); padding-top: 1rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Riverbank</h1>
+  <p class="sub">A privacy-respecting shopping client for GrapheneOS. One permission, no trackers.</p>
+
+  <h2>Add this repository to F-Droid</h2>
+  <div class="card">
+    <span class="url mono" id="repoUrl">https://OWNER.github.io/REPO/fdroid/repo</span>
+    <span class="fp mono">Fingerprint: PUT_YOUR_SHA256_FINGERPRINT_HERE</span>
+  </div>
+
+  <ol>
+    <li>Install the F-Droid client (or Droid-ify / Neo Store).</li>
+    <li>Open <em>Settings &rarr; Repositories &rarr; +</em>.</li>
+    <li>Paste the URL above, then check that the fingerprint the client shows
+        matches the one above before you accept it.</li>
+    <li>Refresh, search for <em>Riverbank</em>, install.</li>
+  </ol>
+
+  <h2>Verify what you installed</h2>
+  <div class="card mono">apksigner verify --print-certs riverbank-*.apk</div>
+
+  <footer>
+    Source: <a href="https://github.com/OWNER/REPO">github.com/OWNER/REPO</a> —
+    MIT licensed. Not affiliated with, endorsed by, or sponsored by Amazon.com, Inc.
+  </footer>
+</main>
+<script>
+  // Fill the repo URL in from wherever this page is actually served.
+  (function () {
+    var el = document.getElementById("repoUrl");
+    if (el && location.hostname.endsWith("github.io")) {
+      el.textContent = location.origin + location.pathname.replace(/\/$/, "") + "/fdroid/repo";
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/cat_storefront">
+        <ListPreference
+            app:key="storefront"
+            app:title="@string/pref_storefront_title"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_privacy" app:iconSpaceReserved="false">
+        <ListPreference
+            app:key="blocking_mode"
+            app:title="@string/pref_blocking_title"
+            app:entries="@array/blocking_entries"
+            app:entryValues="@array/blocking_values"
+            app:defaultValue="standard"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat
+            app:key="block_third_party_cookies"
+            app:title="@string/pref_third_party_cookies_title"
+            app:summary="@string/pref_third_party_cookies_summary"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat
+            app:key="send_gpc"
+            app:title="@string/pref_gpc_title"
+            app:summary="@string/pref_gpc_summary"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat
+            app:key="clear_cookies_on_exit"
+            app:title="@string/pref_clear_cookies_title"
+            app:summary="@string/pref_clear_cookies_summary"
+            app:defaultValue="false"
+            app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat
+            app:key="clear_cache_on_exit"
+            app:title="@string/pref_clear_cache_title"
+            app:summary="@string/pref_clear_cache_summary"
+            app:defaultValue="false"
+            app:iconSpaceReserved="false" />
+        <Preference
+            app:key="blocked_count"
+            app:title="@string/pref_blocked_count_title"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_security" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat
+            app:key="app_lock"
+            app:title="@string/pref_app_lock_title"
+            app:summary="@string/pref_app_lock_summary"
+            app:defaultValue="false"
+            app:iconSpaceReserved="false" />
+        <ListPreference
+            app:key="lock_timeout"
+            app:title="@string/pref_lock_timeout_title"
+            app:entries="@array/timeout_entries"
+            app:entryValues="@array/timeout_values"
+            app:defaultValue="60"
+            app:dependency="app_lock"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_browsing" app:iconSpaceReserved="false">
+        <SwitchPreferenceCompat
+            app:key="hide_app_banners"
+            app:title="@string/pref_hide_app_banners_title"
+            app:summary="@string/pref_hide_app_banners_summary"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat
+            app:key="desktop_site"
+            app:title="@string/pref_desktop_title"
+            app:summary="@string/pref_desktop_summary"
+            app:defaultValue="false"
+            app:iconSpaceReserved="false" />
+        <SwitchPreferenceCompat
+            app:key="external_links"
+            app:title="@string/pref_external_links_title"
+            app:summary="@string/pref_external_links_summary"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+        <ListPreference
+            app:key="dark_mode"
+            app:title="@string/pref_dark_title"
+            app:entries="@array/dark_entries"
+            app:entryValues="@array/dark_values"
+            app:defaultValue="system"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/cat_about" app:iconSpaceReserved="false">
+        <Preference
+            app:key="version"
+            app:title="@string/pref_version_title"
+            app:iconSpaceReserved="false" />
+        <Preference
+            app:key="source"
+            app:title="@string/pref_source_title"
+            app:summary="@string/pref_source_summary"
+            app:iconSpaceReserved="false" />
+        <Preference
+            app:key="privacy_policy"
+            app:title="@string/pref_privacy_policy_title"
+            app:iconSpaceReserved="false" />
+        <Preference
+            app:key="licence"
+            app:title="@string/pref_licence_title"
+            app:summary="@string/pref_licence_summary"
+            app:iconSpaceReserved="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

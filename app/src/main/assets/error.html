@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline</title>
+<style>
+  :root { color-scheme: light dark; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    display: flex; align-items: center; justify-content: center;
+    font: 16px/1.5 system-ui, -apple-system, "Roboto", sans-serif;
+    background: #fbfcfc; color: #191c1d; padding: 24px; text-align: center;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0f1416; color: #e1e3e4; }
+  }
+  .wrap { max-width: 30rem; }
+  h1 { font-size: 1.25rem; margin: 0 0 .5rem; }
+  p { margin: 0 0 1rem; opacity: .8; font-size: .95rem; }
+  code { font-size: .85rem; opacity: .6; word-break: break-all; }
+  a.btn {
+    display: inline-block; padding: .65rem 1.4rem; border-radius: 999px;
+    background: #15616d; color: #fff; text-decoration: none; font-weight: 600;
+  }
+  @media (prefers-color-scheme: dark) { a.btn { background: #56d6e6; color: #00363d; } }
+  ul { text-align: left; font-size: .9rem; opacity: .8; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>__TITLE__</h1>
+    <p>__MESSAGE__</p>
+    <ul>
+      <li>Check that you are connected to a network.</li>
+      <li>On GrapheneOS, confirm the <strong>Network</strong> permission is granted to Riverbank in Settings &rarr; Apps.</li>
+      <li>If you use a VPN or Tor, the storefront may be blocking the exit address.</li>
+    </ul>
+    <p><a class="btn" href="https://riverbank.invalid/retry">Try again</a></p>
+    <p><code>__URL__</code></p>
+  </div>
+</body>
+</html>
